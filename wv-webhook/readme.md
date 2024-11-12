@@ -7,5 +7,5 @@
 
 
 ```
-<script src="https://cdn.jsdelivr.net/gh/ix3-labs/wv-code@v1.0/wv-webhook/webhook.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ix3-labs/wv-code@v1.0/wv-webhook/webhook.min.js"></script>
 ```
