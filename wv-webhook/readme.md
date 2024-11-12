@@ -6,6 +6,7 @@
 - Добавляем скрипт перед закрывающем тегом </body>
 
 
+### Версия 1.0
 ```
 <script src="https://cdn.jsdelivr.net/gh/ix3-labs/wv-code@v1.0/wv-webhook/webhook.min.js"></script>
 ```
