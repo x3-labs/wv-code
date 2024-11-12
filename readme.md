@@ -15,5 +15,5 @@
 Например, если ваш файл называется script.js, ссылка для минифицированной версии будет выглядеть так:
 
 ```
-https://cdn.jsdelivr.net/gh/username/my-repo@версия/script.min.js
+https://cdn.jsdelivr.net/gh/username/my-repo@ver/script.min.js
 ```
