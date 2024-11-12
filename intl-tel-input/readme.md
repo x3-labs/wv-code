@@ -18,7 +18,8 @@ border-radius: 100px 0px 0px 100px;
 }
 </style>
 ```
-```
+
+```javascript
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.4/build/js/intlTelInput.min.js"></script>
 <script>
   $(document).ready(function() {
