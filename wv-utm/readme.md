@@ -31,3 +31,10 @@
 <input type="hidden" class="page_url" name="page_url">
 <input type="hidden" class="form_name" name="form_name">
 <input type="hidden" class="google_client_id" name="google_client_id">
+```
+
+### 2. Добавьте JavaScript-код
+Разместите следующий скрипт в конце HTML-документа
+```
+<script src="https://cdn.jsdelivr.net/gh/x3-labs/wv-code/wv-utm/utm.min.js"></script>
+```
