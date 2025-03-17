@@ -1,4 +1,3 @@
-<script>
 document.addEventListener("DOMContentLoaded", function() {
   // Функция для получения Client ID из cookie _ga с обработкой ошибок
   function getGoogleClientId() {
@@ -66,4 +65,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-</script>
