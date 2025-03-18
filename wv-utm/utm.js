@@ -52,10 +52,14 @@ document.addEventListener("DOMContentLoaded", function() {
       pageUrlInput.value = pageUrl;
     }
     
-    // Заполняем имя формы
+    // Заполняем имя формы, используя значение кнопки отправки, если оно есть
     var formNameInput = form.querySelector(".form_name");
     if (formNameInput) {
-      formNameInput.value = form.getAttribute("name") || "unnamed_form";
+      var submitButton = form.querySelector("input[type='submit']");
+      var formName = (submitButton && submitButton.value) 
+                       ? submitButton.value 
+                       : (form.getAttribute("name") || form.id || "unnamed_form");
+      formNameInput.value = formName;
     }
     
     // Заполняем Client ID, если он доступен
