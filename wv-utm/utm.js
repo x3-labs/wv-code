@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function() {
   function getGoogleClientId() {
     try {
       var cookie = document.cookie;
-      // Ищем cookie _ga в формате GAx.x.number.number
       var match = cookie.match(/_ga=GA\d\.\d\.(\d+\.\d+)/);
       if (match && match[1]) {
         return match[1];
@@ -25,43 +24,37 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Вычисляем URL без UTM-параметров
   var urlObj = new URL(window.location.href);
-  utmParameters.forEach(function(param) {
-    urlObj.searchParams.delete(param);
-  });
+  utmParameters.forEach(param => urlObj.searchParams.delete(param));
   var pageUrl = urlObj.href;
   
   // Получаем Client ID
   var clientId = getGoogleClientId();
   
   // Обрабатываем все формы на странице
-  var forms = document.querySelectorAll("form");
-  forms.forEach(function(form) {
-    // Заполняем UTM-параметры
-    utmParameters.forEach(function(param) {
-      if (searchParams.has(param)) {
-        var input = form.querySelector("." + param);
-        if (input) {
-          input.value = searchParams.get(param);
-        }
+  document.querySelectorAll("form").forEach(form => {
+    utmParameters.forEach(param => {
+      var input = form.querySelector("." + param);
+      if (input && input.value === "") { // Заполняем, только если value пустое
+        input.value = searchParams.get(param) || "";
       }
     });
-    
-    // Заполняем URL страницы
+
+    // Заполняем URL страницы, если поле пустое
     var pageUrlInput = form.querySelector(".page_url");
-    if (pageUrlInput) {
+    if (pageUrlInput && pageUrlInput.value === "") {
       pageUrlInput.value = pageUrl;
     }
-    
-    // Заполняем имя формы, используя значение data-name
+
+    // Заполняем имя формы из data-name, если поле пустое
     var formNameInput = form.querySelector(".form_name");
-    if (formNameInput) {
-      var formName = form.getAttribute("data-name") || form.getAttribute("name") || form.id || "unnamed_form";
+    if (formNameInput && formNameInput.value === "") {
+      var formName = form.getAttribute("data-name") || form.getAttribute("name") || form.id || "";
       formNameInput.value = formName;
     }
-    
-    // Заполняем Client ID, если он доступен
+
+    // Заполняем Client ID, если он доступен и поле пустое
     var clientIdInput = form.querySelector(".google_client_id");
-    if (clientIdInput && clientId) {
+    if (clientIdInput && clientIdInput.value === "" && clientId) {
       clientIdInput.value = clientId;
     }
   });
