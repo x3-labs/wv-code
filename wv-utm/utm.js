@@ -4,12 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     try {
       var cookie = document.cookie;
       var match = cookie.match(/_ga=GA\d\.\d\.(\d+\.\d+)/);
-      if (match && match[1]) {
-        return match[1];
-      } else {
-        console.warn("Cookie _ga не найден или имеет неожиданный формат:", cookie);
-        return null;
-      }
+      return match ? match[1] : null;
     } catch (error) {
       console.error("Ошибка при извлечении Google Client ID:", error);
       return null;
@@ -26,36 +21,43 @@ document.addEventListener("DOMContentLoaded", function() {
   var urlObj = new URL(window.location.href);
   utmParameters.forEach(param => urlObj.searchParams.delete(param));
   var pageUrl = urlObj.href;
-  
+
   // Получаем Client ID
   var clientId = getGoogleClientId();
-  
-  // Обрабатываем все формы на странице
-  document.querySelectorAll("form").forEach(form => {
+
+  // Функция для заполнения скрытых полей
+  function fillHiddenFields(form) {
     utmParameters.forEach(param => {
       var input = form.querySelector("." + param);
-      if (input && input.value === "") { // Заполняем, только если value пустое
+      if (input) {
         input.value = searchParams.get(param) || "";
       }
     });
 
-    // Заполняем URL страницы, если поле пустое
     var pageUrlInput = form.querySelector(".page_url");
-    if (pageUrlInput && pageUrlInput.value === "") {
+    if (pageUrlInput) {
       pageUrlInput.value = pageUrl;
     }
 
-    // Заполняем имя формы из data-name, если поле пустое
     var formNameInput = form.querySelector(".form_name");
-    if (formNameInput && formNameInput.value === "") {
+    if (formNameInput) {
       var formName = form.getAttribute("data-name") || form.getAttribute("name") || form.id || "";
       formNameInput.value = formName;
     }
 
-    // Заполняем Client ID, если он доступен и поле пустое
     var clientIdInput = form.querySelector(".google_client_id");
-    if (clientIdInput && clientIdInput.value === "" && clientId) {
-      clientIdInput.value = clientId;
+    if (clientIdInput) {
+      clientIdInput.value = clientId || "";
     }
-  });
+  }
+
+  // Заполняем скрытые поля при загрузке
+  document.querySelectorAll("form").forEach(fillHiddenFields);
+
+  // Дополнительно заполняем скрытые поля перед отправкой формы
+  document.addEventListener("submit", function(event) {
+    if (event.target.tagName === "FORM") {
+      fillHiddenFields(event.target);
+    }
+  }, true);
 });
