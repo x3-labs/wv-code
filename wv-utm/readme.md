@@ -34,11 +34,23 @@
 <input type="hidden" class="gclid" name="gclid">
 <input type="hidden" class="fbclid" name="fbclid">
 <input type="hidden" class="ttclid" name="ttclid">
+<input type="hidden" class="yclid" name="yclid">
 
-<!-- Дополнительные параметры -->
+<!-- Facebook параметры -->
+<input type="hidden" class="fbp" name="fbp">
+<input type="hidden" class="fbc" name="fbc">
+
+<!-- Системные параметры -->
 <input type="hidden" class="page_url" name="page_url">
 <input type="hidden" class="form_name" name="form_name">
+<input type="hidden" class="referer" name="referer">
+<input type="hidden" class="user_agent" name="user_agent">
+<input type="hidden" class="timestamp" name="timestamp">
+
+<!-- Client ID из разных источников -->
 <input type="hidden" class="google_client_id" name="google_client_id">
+<input type="hidden" class="yandex_client_id" name="yandex_client_id">
+<input type="hidden" class="facebook_browser_id" name="facebook_browser_id">
 ```
 
 ### 2. Добавьте JavaScript-код
