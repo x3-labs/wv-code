@@ -17,6 +17,7 @@ UTM Analytics Script - это JavaScript-скрипт для автоматич�
 ## Установка
 
 ```html
+<!-- UTM Analytics Script -->
 <script src="https://cdn.jsdelivr.net/gh/x3-labs/wv-code/wv-utm/utm.min.js"></script>
 ```
 
