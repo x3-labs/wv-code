@@ -110,11 +110,6 @@ const DEBUG_MODE = false;                       // Режим отладки
 <input type="hidden" class="last_visit_timestamp" name="last_visit_timestamp" />
 <input type="hidden" class="first_visit_page" name="first_visit_page" />
 <input type="hidden" class="last_visit_page" name="last_visit_page" />
-
-<!-- Видимые поля формы -->
-<input type="text" name="name" placeholder="Имя" required />
-<input type="email" name="email" placeholder="Email" required />
-<button type="submit">Отправить</button>
 ```
 
 ### Работа с динамическими формами
