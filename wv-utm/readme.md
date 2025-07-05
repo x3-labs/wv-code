@@ -23,11 +23,19 @@
 Вставьте следующие скрытые поля внутрь каждой формы, которую необходимо обработать:
 
 ```html
+<!-- UTM параметры -->
 <input type="hidden" class="utm_source" name="utm_source">
 <input type="hidden" class="utm_medium" name="utm_medium">
 <input type="hidden" class="utm_campaign" name="utm_campaign">
 <input type="hidden" class="utm_content" name="utm_content">
 <input type="hidden" class="utm_term" name="utm_term">
+
+<!-- Click ID параметры -->
+<input type="hidden" class="gclid" name="gclid">
+<input type="hidden" class="fbclid" name="fbclid">
+<input type="hidden" class="ttclid" name="ttclid">
+
+<!-- Дополнительные параметры -->
 <input type="hidden" class="page_url" name="page_url">
 <input type="hidden" class="form_name" name="form_name">
 <input type="hidden" class="google_client_id" name="google_client_id">
